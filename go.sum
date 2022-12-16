@@ -1,0 +1,6 @@
+github.com/go-telegram-bot-api/telegram-bot-api/v5 v5.5.1 h1:wG8n/XJQ07TmjbITcGiUaOtXxdrINDz1b0J1w0SzqDc=
+github.com/go-telegram-bot-api/telegram-bot-api/v5 v5.5.1/go.mod h1:A2S0CWkNylc2phvKXWBBdD3K0iGnDBGbzRpISP2zBl8=
+github.com/mrkovshik/Insulter_lib v0.0.0-20221212113013-cc5aaa10c7ea h1:oYuW7CQb34UGymi8lbFB/4iuQTqJ2rElgnHNsi9Njws=
+github.com/mrkovshik/Insulter_lib v0.0.0-20221212113013-cc5aaa10c7ea/go.mod h1:XzYtSWZrILNnvhbwdv4EEHKn7xhINxWm51juddDE3dY=
+github.com/mrkovshik/deathClocker_lib v0.0.0-20221212162008-0828b6a3bcdc h1:QBr1v0lb3bJxa2dBLl4r7C85PIeoncJy487Cu+rov6g=
+github.com/mrkovshik/deathClocker_lib v0.0.0-20221212162008-0828b6a3bcdc/go.mod h1:9Jgfgvx87uWpB/YdIUHidYYlUN0h1D+SwgoQiaRpbOU=
