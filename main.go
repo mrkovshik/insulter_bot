@@ -53,7 +53,7 @@ func main() {
 						msg = tgbotapi.NewMessage(update.Message.Chat.ID, "Выбери из списка команд, что ты хочешь узнать!")
 						break FirstLoop
 						case age <= 0|| age >100: 
-						msg = tgbotapi.NewMessage(update.Message.Chat.ID, "Чота сомнительна! Давай вводи нормаьлный возраст!")
+						msg = tgbotapi.NewMessage(update.Message.Chat.ID, "Чота сомнительна! Давай вводи нормальный возраст!")
 						default:
 							msg = tgbotapi.NewMessage(update.Message.Chat.ID, "Ну же, "+update.Message.From.FirstName+" не тупи - введи свой возраст циферками или просто напиши слово 'нет', если передумал")
 					}
