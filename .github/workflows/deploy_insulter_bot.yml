@@ -30,7 +30,7 @@ jobs:
           path: app
 
       - name: Deploy
-        uses: actions/ssh-action@v1
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
