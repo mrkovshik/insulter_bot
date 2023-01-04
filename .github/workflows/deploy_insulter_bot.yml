@@ -1,6 +1,7 @@
 name: Go package
 
 on: [push]
+# TODO fix rules, deploy on merge or smtf
 
 jobs:
   build:
@@ -29,12 +30,23 @@ jobs:
           name: app
           path: app
 
-      - name: Deploy
+  deploy:
+    steps:
+      - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@v0.1.6
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          script: |
-            scp app ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/app
-            ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "./app"
+          debug: true
+          script: whoami
+
+        - name: Deploy
+          uses: appleboy/ssh-action@v0.1.6
+          with:
+            host: ${{ secrets.SSH_HOST }}
+            username: ${{ secrets.SSH_USERNAME }}
+            key: ${{ secrets.SSH_KEY }}
+            script: |
+              scp app ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/app
+              ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "./app"
