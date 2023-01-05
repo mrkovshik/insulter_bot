@@ -31,9 +31,10 @@ jobs:
     needs: [build]
     steps:
       - name: Download the build output
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: app
+          path: /tmp/app
 
       - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@v0.1.6
@@ -52,5 +53,5 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             ls -la
-            scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no app ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/app
+            scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no /tmp/app ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/app
             ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "./app"
