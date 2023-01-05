@@ -31,19 +31,17 @@ jobs:
     needs: [build]
     steps:
       - uses: actions/download-artifact@v3
+        with:
+          name: app
 
       - name: Display structure of downloaded files
         run: ls -R
 
       - name: Deploy
-        uses: appleboy/ssh-action@v0.1.6
+        uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          debug: true
-          script: |
-            ls -la
-            ls -la /tmp
-            pwd
-            scp -rp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ./app ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/
+          source: "app/app"
+          target: "app"
