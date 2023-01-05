@@ -46,4 +46,4 @@ jobs:
             ls -la
             ls -la /tmp
             pwd
-            scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no /tmp/app ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/app
+            scp -rp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ./app ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/
