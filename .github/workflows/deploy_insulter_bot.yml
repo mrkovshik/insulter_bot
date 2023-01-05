@@ -49,5 +49,6 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            ls -la
             scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no app ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/app
             ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "./app"
