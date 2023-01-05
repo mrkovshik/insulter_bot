@@ -36,22 +36,15 @@ jobs:
           name: app
           path: /tmp/app
 
-      - name: executing remote ssh commands using ssh key
-        uses: appleboy/ssh-action@v0.1.6
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          debug: true
-          script: whoami
-
       - name: Deploy
         uses: appleboy/ssh-action@v0.1.6
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
+          debug: true
           script: |
             ls -la
+            ls -la /tmp
+            pwd
             scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no /tmp/app ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/app
-            ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "./app"
